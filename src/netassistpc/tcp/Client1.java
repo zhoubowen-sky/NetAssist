@@ -27,7 +27,7 @@ public class Client1 {
 			String str = NetAssist.jTextArea_srfs.getText();//获取输入框里面的内容
 			// 发送数据到服务端
 			out.println(str);
-			if ("bye".equals(str)) { 
+			if ("bye".equals(str)) {
 				flag = false;
 			} else {
 				try {
