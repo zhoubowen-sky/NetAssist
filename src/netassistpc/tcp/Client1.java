@@ -1,3 +1,9 @@
+/**
+ * 程序名称：网络调试助手Java版PC端
+ * 作       者：周博文
+ * 完成日期：2016年11月03日
+ * 版       本：V1.0
+ */
 package netassistpc.tcp;
 
 import java.io.BufferedReader;
