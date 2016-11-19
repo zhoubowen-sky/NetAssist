@@ -34,8 +34,8 @@ public class NetAssist extends JFrame{
 	/*以下是UI界面的相关组件*/
 	public static JTextField jTextField_UDP_bdzjdz = new JTextField("本地主机地址",15);//UDP本地主机地址编辑框
 	public static JTextField jTextField_UDP_bdzjdk = new JTextField("本地主机端口",15);//UDP本地主机端口编辑框
-	public static JTextField jTextField_TCPClient_bdzjdz = new JTextField("本地主机地址",15);//TCP Client本地主机地址编辑框
-	public static JTextField jTextField_TCPClient_bdzjdk = new JTextField("远程主机地址",15);//TCP Client本地主机端口编辑框
+	//public static JTextField jTextField_TCPClient_bdzjdz = new JTextField("本地主机地址",15);//TCP Client本地主机地址编辑框
+	//public static JTextField jTextField_TCPClient_bdzjdk = new JTextField("远程主机地址",15);//TCP Client本地主机端口编辑框
 	public static JTextField jTextField_TCPServer_bdzjdz = new JTextField("本地主机地址",15);//TCP Server本地主机地址编辑框
 	public static JTextField jTextField_TCPServer_bdzjdk = new JTextField("本地主机端口",15);//TCP Server本地主机端口编辑框
 	public static JButton jButton_UDP_start = new JButton("开启UDP服务");//开启UDP服务器的按钮
@@ -90,14 +90,14 @@ public class NetAssist extends JFrame{
 		jpleft_UDP.add(jButton_UDP_stop);
 		
 		//左边TCP Client协议栏中的相关组件
-		JLabel jltcpclient = new JLabel("这里是TCP Client协议相关的内容");
-		JButton jButton_TCPClient_start = new JButton("开启TCP Client服务");
-		JButton jButton_TCPClient_stop = new JButton("关闭TCP Client服务");
-		jpleft_TCPClient.add(jltcpclient);
-		jpleft_TCPClient.add(jTextField_TCPClient_bdzjdz);
-		jpleft_TCPClient.add(jTextField_TCPClient_bdzjdk);
-		jpleft_TCPClient.add(jButton_TCPClient_start);
-		jpleft_TCPClient.add(jButton_TCPClient_stop);
+		//JLabel jltcpclient = new JLabel("这里是TCP Client协议相关的内容");
+		//JButton jButton_TCPClient_start = new JButton("开启TCP Client服务");
+		//JButton jButton_TCPClient_stop = new JButton("关闭TCP Client服务");
+		//jpleft_TCPClient.add(jltcpclient);
+		//jpleft_TCPClient.add(jTextField_TCPClient_bdzjdz);
+		//jpleft_TCPClient.add(jTextField_TCPClient_bdzjdk);
+		//jpleft_TCPClient.add(jButton_TCPClient_start);
+		//jpleft_TCPClient.add(jButton_TCPClient_stop);
 		
 		//左边TCP Server协议栏中的相关组件
 		JLabel jltcpserver = new JLabel("这里是TCP Server协议相关的内容");
@@ -160,7 +160,6 @@ public class NetAssist extends JFrame{
 	 */
 	class ActionHandler implements ActionListener{
 		
-		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			      if(e.getActionCommand() == "jbsend"){
@@ -203,7 +202,7 @@ public class NetAssist extends JFrame{
 			}else if (e.getActionCommand() == "jButton_TCPServer_start") {
 				//点击开启TCP Server服务的按钮
 				SEND_STATE = 1;//将发送按钮 SEND_STATE 状态改成1
-				try {
+				/*try {
 	    			  //开启TCP Server服务
 					Server1.tcpServerReceive(Integer.parseInt(jTextField_TCPServer_bdzjdk.getText()));
 					
@@ -211,12 +210,17 @@ public class NetAssist extends JFrame{
 					e1.printStackTrace();
 				} catch (Exception e1) {
 					e1.printStackTrace();
-				}
+				}*/
+				
+				//开启TCPServer的线程
+				Server1.flag_Server1 = true;
+				Server1 server1 = new Server1(Integer.parseInt(jTextField_TCPServer_bdzjdk.getText()));
+				server1.start();
 				
 				
 			}else if (e.getActionCommand() == "jButton_TCPServer_stop") {
 				//关闭TCP Server服务的按钮
-				
+				Server1.flag_Server1 = false;//改变标志位的值，让循环自动停止
 				
 				
 				
