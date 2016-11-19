@@ -46,7 +46,7 @@ public class NetAssist extends JFrame{
 	public static JTextArea jTextArea_srfs = new JTextArea(5,10);//输入并发送的文本框
 	public static JTextArea jTextArea_wbjsxs = new JTextArea(10,10);//接收显示文本框
 	
-	public static int SEND_STATE = 1;//"点击发送"按钮对应的状态变量，0为向局域网所有设备发送UDP广播，1为发送UDP，2为发送TCP
+	public static int SEND_STATE = 0;//"点击发送"按钮对应的状态变量，0为向局域网所有设备发送UDP广播，1为发送UDP，2为发送TCP
 	
 	public void go(){
 		JFrame win = new JFrame("网络调试助手Java版 V1.0");    //程序窗口
@@ -57,17 +57,17 @@ public class NetAssist extends JFrame{
 		
 		JPanel jpleft = new JPanel();//左边布局
 		JPanel jpright = new JPanel();//右边布局
-		jpleft.setLayout(new GridLayout(3, 1));  //表格布局
+		jpleft.setLayout(new GridLayout(2, 1));  //表格布局  两行一列
 		
 		JPanel jpleft_UDP = new JPanel();
-		JPanel jpleft_TCPClient = new JPanel();
+		//JPanel jpleft_TCPClient = new JPanel();
 		JPanel jpleft_TCPServer = new JPanel();
 		
 		JPanel jpright_wbjsxs = new JPanel();//右边文本接收显示
 		JPanel jpright_srfs = new JPanel();//右边输入发送
 		
 		jpleft.add(jpleft_UDP);
-		jpleft.add(jpleft_TCPClient);
+		//jpleft.add(jpleft_TCPClient);
 		jpleft.add(jpleft_TCPServer);
 		
 		jpright.add(jpright_wbjsxs);
@@ -75,7 +75,7 @@ public class NetAssist extends JFrame{
 		
 		win.add(jpleft);
 		win.add(jpright);
-		win.setVisible(true);   //定义窗口可见性
+		win.setVisible(true);   //定义窗口可见性为真
 		
 		//左边UDP协议栏中的相关组件
 		JLabel jludp = new JLabel("这里是UDP协议相关的内容");
@@ -83,11 +83,14 @@ public class NetAssist extends JFrame{
 		        jButton_UDP_start.setActionCommand("jButton_UDP_start");
 		//JButton jButton_UDP_stop = new JButton("关闭UDP服务");
 		        jButton_UDP_stop.setActionCommand("jButton_UDP_stop");
+		JButton jButton_UDP_send = new JButton("发送UDP消息");
+				jButton_UDP_send.setActionCommand("jButton_UDP_send");
 		jpleft_UDP.add(jludp);
 		jpleft_UDP.add(jTextField_UDP_bdzjdz);
 		jpleft_UDP.add(jTextField_UDP_bdzjdk);
 		jpleft_UDP.add(jButton_UDP_start);
 		jpleft_UDP.add(jButton_UDP_stop);
+		jpleft_UDP.add(jButton_UDP_send);
 		
 		//左边TCP Client协议栏中的相关组件
 		//JLabel jltcpclient = new JLabel("这里是TCP Client协议相关的内容");
@@ -105,18 +108,21 @@ public class NetAssist extends JFrame{
 		        jButton_TCPServer_start.setActionCommand("jButton_TCPServer_start");
 		//JButton jButton_TCPServer_stop = new JButton("关闭TCP Server服务");
 		        jButton_TCPServer_stop.setActionCommand("jButton_TCPServer_stop");
+		JButton jButton_TCPServer_send = new JButton("发送TCP消息");
+				jButton_TCPServer_send.setActionCommand("jButton_TCPServer_send");
 		jpleft_TCPServer.add(jltcpserver);
 		jpleft_TCPServer.add(jTextField_TCPServer_bdzjdz);
 		jpleft_TCPServer.add(jTextField_TCPServer_bdzjdk);
 		jpleft_TCPServer.add(jButton_TCPServer_start);//开启的按钮
 		jpleft_TCPServer.add(jButton_TCPServer_stop);
+		jpleft_TCPServer.add(jButton_TCPServer_send);
 		
 		
-		JButton jbsend = new JButton("点击发送");
+		JButton jbsend = new JButton("这里是要发送的文本");
 		        jbsend.setActionCommand("jbsend");
 		
 		
-		JLabel jLabel_wbjsxs = new JLabel("接收文本");
+		JLabel jLabel_wbjsxs = new JLabel("接收的文本");
 		
 		
 		
@@ -178,20 +184,13 @@ public class NetAssist extends JFrame{
 			    		  try {
 			    			  //TCP消息发送
 							Client1.tcpClientSend(jTextField_TCPServer_bdzjdz.getText(), Integer.parseInt(jTextField_TCPServer_bdzjdk.getText()));
+							
 						} catch (NumberFormatException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 			    		  
-					}else if (SEND_STATE == 2) {
-						System.out.println("事件2响应");
-						
-					}else if (SEND_STATE == 3) {
-						System.out.println("事件3响应");
-						
 					}else if (SEND_STATE != 0 && SEND_STATE != 1 && SEND_STATE != 2 && SEND_STATE != 3) {
 						System.out.println("事件else响应");
 						
@@ -249,7 +248,18 @@ public class NetAssist extends JFrame{
 			
 		}
 		
-		
+	}
+	
+	/**
+	 * 定义事件监听类1
+	 * @author ZBW
+	 *
+	 */
+	class ActionHandler2 implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		}
 		
 	}
 	
