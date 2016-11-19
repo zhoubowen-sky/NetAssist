@@ -16,9 +16,9 @@ import java.net.SocketTimeoutException;
 import netassistpc.main.NetAssist;
 
 public class Client1 {
-	public static void tcpClientSend(String ip , int port) throws IOException {
+	public static void tcpClientSend(String ip, int port) throws IOException {
 		// 客户端请求与本机在20006端口建立TCP连接
-		Socket client = new Socket(ip/*"127.0.0.1"*/, /*20006*/port);
+		Socket client = new Socket(ip/* "127.0.0.1" */, /* 20006 */port);
 		client.setSoTimeout(10000);
 		// 获取键盘输入
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -27,24 +27,24 @@ public class Client1 {
 		// 获取Socket的输入流，用来接收从服务端发送过来的数据
 		BufferedReader buf = new BufferedReader(new InputStreamReader(client.getInputStream()));
 		boolean flag = true;
-		//while (flag) {
-			System.out.print("输入信息：");
-			//String str = input.readLine();//获取控制台输入的字符串
-			String str = NetAssist.jTextArea_srfs.getText();//获取输入框里面的内容
-			// 发送数据到服务端
-			out.println(str);
-			if ("bye".equals(str)) {
-				flag = false;
-			} else {
-				try {
-					// 从服务器端接收数据有个时间限制（系统自设，也可以自己设置），超过了这个时间，便会抛出该异常
-					String echo = buf.readLine();
-					System.out.println(echo);
-				} catch (SocketTimeoutException e) {
-					System.out.println("Time out, No response");
-				}
+		// while (flag) {
+		System.out.print("输入信息：");
+		// String str = input.readLine();//获取控制台输入的字符串
+		String str = NetAssist.jTextArea_srfs.getText();// 获取输入框里面的内容
+		// 发送数据到服务端
+		out.println(str);
+		if ("bye".equals(str)) {
+			flag = false;
+		} else {
+			try {
+				// 从服务器端接收数据有个时间限制（系统自设，也可以自己设置），超过了这个时间，便会抛出该异常
+				String echo = buf.readLine();
+				System.out.println(echo);
+			} catch (SocketTimeoutException e) {
+				System.out.println("Time out, No response");
 			}
-		//}
+		}
+		// }
 		input.close();
 		if (client != null) {
 			// 如果构造函数建立起了连接，则关闭套接字，如果没有建立起连接，自然不用关闭
