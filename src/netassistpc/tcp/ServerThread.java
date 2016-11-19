@@ -16,16 +16,16 @@ public class ServerThread extends Thread /*implements Runnable */{
 		this.client = client;
 	}
 	
-	//TCPServer ÏûÏ¢½ÓÊÕ
+	//TCPServer æ¶ˆæ¯æ¥æ”¶
 	public static void receiveTCP() {
 		try {
-			// »ñÈ¡SocketµÄÊä³öÁ÷£¬ÓÃÀ´Ïò¿Í»§¶Ë·¢ËÍÊı¾İ
+			// è·å–Socketçš„è¾“å‡ºæµï¼Œç”¨æ¥å‘å®¢æˆ·ç«¯å‘é€æ•°æ®
 			PrintStream out = new PrintStream(client.getOutputStream());
-			// »ñÈ¡SocketµÄÊäÈëÁ÷£¬ÓÃÀ´½ÓÊÕ´Ó¿Í»§¶Ë·¢ËÍ¹ıÀ´µÄÊı¾İ
+			// è·å–Socketçš„è¾“å…¥æµï¼Œç”¨æ¥æ¥æ”¶ä»å®¢æˆ·ç«¯å‘é€è¿‡æ¥çš„æ•°æ®
 			BufferedReader buf = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			//boolean flag = true;
 			//while (flag) {
-				// ½ÓÊÕ´Ó¿Í»§¶Ë·¢ËÍ¹ıÀ´µÄÊı¾İ
+				// æ¥æ”¶ä»å®¢æˆ·ç«¯å‘é€è¿‡æ¥çš„æ•°æ®
 				String str = buf.readLine();
 				if (str == null || "".equals(str)) {
 					//flag = false;
@@ -33,15 +33,15 @@ public class ServerThread extends Thread /*implements Runnable */{
 					if ("bye".equals(str)) {
 						//flag = false;
 					} else {
-						// ½«½ÓÊÕµ½µÄ×Ö·û´®Ç°Ãæ¼ÓÉÏecho£¬·¢ËÍµ½¶ÔÓ¦µÄ¿Í»§¶Ë
+						// å°†æ¥æ”¶åˆ°çš„å­—ç¬¦ä¸²å‰é¢åŠ ä¸Šechoï¼Œå‘é€åˆ°å¯¹åº”çš„å®¢æˆ·ç«¯
 						//out.println("echo:" + str);
-						//NetAssist.jTextArea_wbjsxs.append(str);//ÔÚÎÄ±¾ÏÔÊ¾¿òÀïÃæÏÔÊ¾ÎÄ×Ö
+						//NetAssist.jTextArea_wbjsxs.append(str);//åœ¨æ–‡æœ¬æ˜¾ç¤ºæ¡†é‡Œé¢æ˜¾ç¤ºæ–‡å­—
 					}
 				}
 				
 				
 				out.println("echo:" + str);
-				NetAssist.jTextArea_wbjsxs.append(str);//ÔÚÎÄ±¾ÏÔÊ¾¿òÀïÃæÏÔÊ¾ÎÄ×Ö
+				NetAssist.jTextArea_wbjsxs.append(str);//åœ¨æ–‡æœ¬æ˜¾ç¤ºæ¡†é‡Œé¢æ˜¾ç¤ºæ–‡å­—
 				
 				
 			//}
@@ -56,8 +56,8 @@ public class ServerThread extends Thread /*implements Runnable */{
 	public void run() {
 		
 		//while(true){
-			//if(flag == false){break;}//Ìø³öÑ­»·
-			//¿ªÆôTCPÏûÏ¢µÄ½ÓÊÕÏß³Ì
+			//if(flag == false){break;}//è·³å‡ºå¾ªç¯
+			//å¼€å¯TCPæ¶ˆæ¯çš„æ¥æ”¶çº¿ç¨‹
 			receiveTCP();
 		//}
 		

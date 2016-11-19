@@ -1,8 +1,8 @@
 /**
- * ³ÌĞòÃû³Æ£ºÍøÂçµ÷ÊÔÖúÊÖJava°æPC¶Ë
- * ×÷       Õß£ºÖÜ²©ÎÄ
- * Íê³ÉÈÕÆÚ£º2016Äê11ÔÂ03ÈÕ
- * °æ       ±¾£ºV1.0
+ * ç¨‹åºåç§°ï¼šç½‘ç»œè°ƒè¯•åŠ©æ‰‹Javaç‰ˆPCç«¯
+ * ä½œ       è€…ï¼šå‘¨åšæ–‡
+ * å®Œæˆæ—¥æœŸï¼š2016å¹´11æœˆ03æ—¥
+ * ç‰ˆ       æœ¬ï¼šV1.0
  */
 
 package netassistpc.udp;
@@ -16,38 +16,38 @@ import netassistpc.main.*;
 public class UDP {
 
 	/**
-	 * UDPÏûÏ¢·¢ËÍµÄ·½·¨
+	 * UDPæ¶ˆæ¯å‘é€çš„æ–¹æ³•
 	 * 
 	 * @throws IOException
 	 */
 	public static void UDPsend(String ip, int port) throws IOException {
-		System.out.println("UDPsend()·½·¨Æô¶¯¡£");
+		System.out.println("UDPsend()æ–¹æ³•å¯åŠ¨ã€‚");
 
 		DatagramSocket ds = new DatagramSocket();
-		byte[] buf = NetAssist.jTextArea_srfs.getText().getBytes(); // »ñÈ¡ÊäÈë¿òÖĞµÄÄÚÈİ
+		byte[] buf = NetAssist.jTextArea_srfs.getText().getBytes(); // è·å–è¾“å…¥æ¡†ä¸­çš„å†…å®¹
 		DatagramPacket dp = new DatagramPacket(buf, buf.length, InetAddress.getByName(ip /* "127.0.0.1" */),
-				port /* 10000 */);// 10000Îª¶¨ÒåµÄ¶Ë¿Ú
-		System.out.println("Êı¾İ°ü¿ªÊ¼·¢ËÍ¡£¡£¡£");
+				port /* 10000 */);// 10000ä¸ºå®šä¹‰çš„ç«¯å£
+		System.out.println("æ•°æ®åŒ…å¼€å§‹å‘é€ã€‚ã€‚ã€‚");
 		ds.send(dp);
 		ds.close();
 	}
 
 	/**
-	 * UDPÏûÏ¢½ÓÊÕ
+	 * UDPæ¶ˆæ¯æ¥æ”¶
 	 * 
 	 * @throws IOException
 	 */
 	public static void UDPReceive() throws IOException {
-		// ´´½¨UDP socket£¬½¨Á¢¶Ëµã
-		DatagramSocket ds = new DatagramSocket(10000); // ¼àÌı10000¶Ë¿Ú
+		// åˆ›å»ºUDP socketï¼Œå»ºç«‹ç«¯ç‚¹
+		DatagramSocket ds = new DatagramSocket(10000); // ç›‘å¬10000ç«¯å£
 
-		// ¶¨ÒåÊı¾İ°ü£¬ÓÃÓÚ´æ´¢Êı¾İ
+		// å®šä¹‰æ•°æ®åŒ…ï¼Œç”¨äºå­˜å‚¨æ•°æ®
 		byte[] buf = new byte[1024];
 		DatagramPacket dp = new DatagramPacket(buf, buf.length);
-		System.out.println("Êı¾İ°ü¿ªÊ¼½ÓÊÕ");
+		System.out.println("æ•°æ®åŒ…å¼€å§‹æ¥æ”¶");
 		ds.receive(dp);
 
-		String ip = dp.getAddress().getHostAddress(); // Êı¾İÌáÈ¡
+		String ip = dp.getAddress().getHostAddress(); // æ•°æ®æå–
 		String data = new String(dp.getData(), 0, dp.getLength());
 		int port = dp.getPort();
 		System.out.println(data + "." + port + ".." + ip);

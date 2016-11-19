@@ -1,8 +1,8 @@
 /**
- * ³ÌĞòÃû³Æ£ºÍøÂçµ÷ÊÔÖúÊÖJava°æPC¶Ë
- * ×÷       Õß£ºÖÜ²©ÎÄ
- * Íê³ÉÈÕÆÚ£º2016Äê11ÔÂ03ÈÕ
- * °æ       ±¾£ºV1.0
+ * ç¨‹åºåç§°ï¼šç½‘ç»œè°ƒè¯•åŠ©æ‰‹Javaç‰ˆPCç«¯
+ * ä½œ       è€…ï¼šå‘¨åšæ–‡
+ * å®Œæˆæ—¥æœŸï¼š2016å¹´11æœˆ03æ—¥
+ * ç‰ˆ       æœ¬ï¼šV1.0
  */
 package netassistpc.tcp;
 
@@ -17,27 +17,27 @@ import netassistpc.main.NetAssist;
 
 public class Client1 {
 	public static void tcpClientSend(String ip , int port) throws IOException {
-		// ¿Í»§¶ËÇëÇóÓë±¾»úÔÚ20006¶Ë¿Ú½¨Á¢TCPÁ¬½Ó
+		// å®¢æˆ·ç«¯è¯·æ±‚ä¸æœ¬æœºåœ¨20006ç«¯å£å»ºç«‹TCPè¿æ¥
 		Socket client = new Socket(ip/*"127.0.0.1"*/, /*20006*/port);
 		client.setSoTimeout(10000);
-		// »ñÈ¡¼üÅÌÊäÈë
+		// è·å–é”®ç›˜è¾“å…¥
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-		// »ñÈ¡SocketµÄÊä³öÁ÷£¬ÓÃÀ´·¢ËÍÊı¾İµ½·şÎñ¶Ë
+		// è·å–Socketçš„è¾“å‡ºæµï¼Œç”¨æ¥å‘é€æ•°æ®åˆ°æœåŠ¡ç«¯
 		PrintStream out = new PrintStream(client.getOutputStream());
-		// »ñÈ¡SocketµÄÊäÈëÁ÷£¬ÓÃÀ´½ÓÊÕ´Ó·şÎñ¶Ë·¢ËÍ¹ıÀ´µÄÊı¾İ
+		// è·å–Socketçš„è¾“å…¥æµï¼Œç”¨æ¥æ¥æ”¶ä»æœåŠ¡ç«¯å‘é€è¿‡æ¥çš„æ•°æ®
 		BufferedReader buf = new BufferedReader(new InputStreamReader(client.getInputStream()));
 		boolean flag = true;
 		//while (flag) {
-			System.out.print("ÊäÈëĞÅÏ¢£º");
-			//String str = input.readLine();//»ñÈ¡¿ØÖÆÌ¨ÊäÈëµÄ×Ö·û´®
-			String str = NetAssist.jTextArea_srfs.getText();//»ñÈ¡ÊäÈë¿òÀïÃæµÄÄÚÈİ
-			// ·¢ËÍÊı¾İµ½·şÎñ¶Ë
+			System.out.print("è¾“å…¥ä¿¡æ¯ï¼š");
+			//String str = input.readLine();//è·å–æ§åˆ¶å°è¾“å…¥çš„å­—ç¬¦ä¸²
+			String str = NetAssist.jTextArea_srfs.getText();//è·å–è¾“å…¥æ¡†é‡Œé¢çš„å†…å®¹
+			// å‘é€æ•°æ®åˆ°æœåŠ¡ç«¯
 			out.println(str);
 			if ("bye".equals(str)) {
 				flag = false;
 			} else {
 				try {
-					// ´Ó·şÎñÆ÷¶Ë½ÓÊÕÊı¾İÓĞ¸öÊ±¼äÏŞÖÆ£¨ÏµÍ³×ÔÉè£¬Ò²¿ÉÒÔ×Ô¼ºÉèÖÃ£©£¬³¬¹ıÁËÕâ¸öÊ±¼ä£¬±ã»áÅ×³ö¸ÃÒì³£
+					// ä»æœåŠ¡å™¨ç«¯æ¥æ”¶æ•°æ®æœ‰ä¸ªæ—¶é—´é™åˆ¶ï¼ˆç³»ç»Ÿè‡ªè®¾ï¼Œä¹Ÿå¯ä»¥è‡ªå·±è®¾ç½®ï¼‰ï¼Œè¶…è¿‡äº†è¿™ä¸ªæ—¶é—´ï¼Œä¾¿ä¼šæŠ›å‡ºè¯¥å¼‚å¸¸
 					String echo = buf.readLine();
 					System.out.println(echo);
 				} catch (SocketTimeoutException e) {
@@ -47,8 +47,8 @@ public class Client1 {
 		//}
 		input.close();
 		if (client != null) {
-			// Èç¹û¹¹Ôìº¯Êı½¨Á¢ÆğÁËÁ¬½Ó£¬Ôò¹Ø±ÕÌ×½Ó×Ö£¬Èç¹ûÃ»ÓĞ½¨Á¢ÆğÁ¬½Ó£¬×ÔÈ»²»ÓÃ¹Ø±Õ
-			client.close(); // Ö»¹Ø±Õsocket£¬Æä¹ØÁªµÄÊäÈëÊä³öÁ÷Ò²»á±»¹Ø±Õ
+			// å¦‚æœæ„é€ å‡½æ•°å»ºç«‹èµ·äº†è¿æ¥ï¼Œåˆ™å…³é—­å¥—æ¥å­—ï¼Œå¦‚æœæ²¡æœ‰å»ºç«‹èµ·è¿æ¥ï¼Œè‡ªç„¶ä¸ç”¨å…³é—­
+			client.close(); // åªå…³é—­socketï¼Œå…¶å…³è”çš„è¾“å…¥è¾“å‡ºæµä¹Ÿä¼šè¢«å…³é—­
 		}
 	}
 }

@@ -6,23 +6,23 @@ import java.net.Socket;
 public class Server1 extends Thread{
 	
 	public static boolean flag_Server1 = false;
-	int port;//¶Ë¿Ú
+	int port;//ç«¯å£
 	
-	//¹¹Ôìº¯Êı
+	//æ„é€ å‡½æ•°
 	public Server1(int port){
 		this.port = port;
 	}
 	
 	public static void tcpServerReceive(int port) throws Exception {
-		// ·şÎñ¶ËÔÚ20006¶Ë¿Ú¼àÌı¿Í»§¶ËÇëÇóµÄTCPÁ¬½Ó
+		// æœåŠ¡ç«¯åœ¨20006ç«¯å£ç›‘å¬å®¢æˆ·ç«¯è¯·æ±‚çš„TCPè¿æ¥
 		ServerSocket server = new ServerSocket(port);//20006
 		Socket client = null;
 		boolean f = true;
 		//while (f) {
-			// µÈ´ı¿Í»§¶ËµÄÁ¬½Ó£¬Èç¹ûÃ»ÓĞ»ñÈ¡Á¬½Ó
+			// ç­‰å¾…å®¢æˆ·ç«¯çš„è¿æ¥ï¼Œå¦‚æœæ²¡æœ‰è·å–è¿æ¥
 			client = server.accept();
-			System.out.println("Óë¿Í»§¶ËÁ¬½Ó³É¹¦£¡");
-			// ÎªÃ¿¸ö¿Í»§¶ËÁ¬½Ó¿ªÆôÒ»¸öÏß³Ì
+			System.out.println("ä¸å®¢æˆ·ç«¯è¿æ¥æˆåŠŸï¼");
+			// ä¸ºæ¯ä¸ªå®¢æˆ·ç«¯è¿æ¥å¼€å¯ä¸€ä¸ªçº¿ç¨‹
 			new Thread(new ServerThread(client)).start();
 			//}
 		server.close();
@@ -30,7 +30,7 @@ public class Server1 extends Thread{
 	
 	public void run() {
 		while(true){
-			if(flag_Server1 == false){break;}//Ìø³öÑ­»·
+			if(flag_Server1 == false){break;}//è·³å‡ºå¾ªç¯
 			
 			try {
 			tcpServerReceive(port);

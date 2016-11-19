@@ -1,8 +1,8 @@
 /**
- * ³ÌĞòÃû³Æ£ºÍøÂçµ÷ÊÔÖúÊÖJava°æPC¶Ë
- * ×÷       Õß£ºÖÜ²©ÎÄ
- * Íê³ÉÈÕÆÚ£º2016Äê11ÔÂ03ÈÕ
- * °æ       ±¾£ºV1.0
+ * ç¨‹åºåç§°ï¼šç½‘ç»œè°ƒè¯•åŠ©æ‰‹Javaç‰ˆPCç«¯
+ * ä½œ       è€…ï¼šå‘¨åšæ–‡
+ * å®Œæˆæ—¥æœŸï¼š2016å¹´11æœˆ03æ—¥
+ * ç‰ˆ       æœ¬ï¼šV1.0
  */
 package netassistpc.udp;
 
@@ -12,31 +12,31 @@ import netassistpc.main.NetAssist;
 
 public class UDPReceiveThread extends Thread {
 
-	public static boolean flag = true;// ÍË³ö½ÓÊÕ³ÌĞòÊ±ºòµÄ±êÖ¾Î»
-	int port;// ¶Ë¿Ú
+	public static boolean flag = true;// é€€å‡ºæ¥æ”¶ç¨‹åºæ—¶å€™çš„æ ‡å¿—ä½
+	int port;// ç«¯å£
 
-	// ¹¹Ôì·½·¨
+	// æ„é€ æ–¹æ³•
 	public UDPReceiveThread(int port) {
 		this.port = port;
 	}
 
 	public static void receiveUDP() throws Exception {
-		// ´´½¨UDP socket£¬½¨Á¢¶Ëµã
-		DatagramSocket ds = new DatagramSocket(Integer.parseInt(NetAssist.jTextField_UDP_bdzjdk.getText())); // ¼àÌı¶Ë¿Ú
+		// åˆ›å»ºUDP socketï¼Œå»ºç«‹ç«¯ç‚¹
+		DatagramSocket ds = new DatagramSocket(Integer.parseInt(NetAssist.jTextField_UDP_bdzjdk.getText())); // ç›‘å¬ç«¯å£
 
-		// ¶¨ÒåÊı¾İ°ü£¬ÓÃÓÚ´æ´¢Êı¾İ
+		// å®šä¹‰æ•°æ®åŒ…ï¼Œç”¨äºå­˜å‚¨æ•°æ®
 		byte[] buf = new byte[1024];
 		DatagramPacket dp = new DatagramPacket(buf, buf.length);
-		System.out.println("Êı¾İ°ü¿ªÊ¼½ÓÊÕ");
+		System.out.println("æ•°æ®åŒ…å¼€å§‹æ¥æ”¶");
 		ds.receive(dp);
 
-		String ip = dp.getAddress().getHostAddress(); // Êı¾İÌáÈ¡
+		String ip = dp.getAddress().getHostAddress(); // æ•°æ®æå–
 		String data = new String(dp.getData(), 0, dp.getLength());
 		int port = dp.getPort();
 		System.out.println(data + "." + port + "." + ip);
 		ds.close();
 
-		NetAssist.jTextArea_wbjsxs.append(data);// ÏòÆÁÄ»Ğ´Èë½ÓÊÜµ½µÄÊı¾İ
+		NetAssist.jTextArea_wbjsxs.append(data);// å‘å±å¹•å†™å…¥æ¥å—åˆ°çš„æ•°æ®
 	}
 
 	public void run() {

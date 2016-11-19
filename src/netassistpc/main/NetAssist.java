@@ -1,8 +1,8 @@
 /**
- * ³ÌĞòÃû³Æ£ºÍøÂçµ÷ÊÔÖúÊÖJava°æPC¶Ë
- * ×÷       Õß£ºÖÜ²©ÎÄ
- * Íê³ÉÈÕÆÚ£º2016Äê11ÔÂ03ÈÕ
- * °æ       ±¾£ºV1.0
+ * ç¨‹åºåç§°ï¼šç½‘ç»œè°ƒè¯•åŠ©æ‰‹Javaç‰ˆPCç«¯
+ * ä½œ       è€…ï¼šå‘¨åšæ–‡
+ * å®Œæˆæ—¥æœŸï¼š2016å¹´11æœˆ03æ—¥
+ * ç‰ˆ       æœ¬ï¼šV1.0
  */
 
 package netassistpc.main;
@@ -21,50 +21,50 @@ import netassistpc.udp.UDPReceiveThread;
 
 public class NetAssist extends JFrame{
 	
-	//¹¹Ôìº¯Êı
+	//æ„é€ å‡½æ•°
 	public NetAssist(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public static final int winWidth = 550;//´°¿Ú¿í¶È
-	public static final int winHeight = 550;//´°¿Ú¸ß¶È
-	public static final int winLeft = 600;//¾àÀëÆÁÄ»×ó±ßÔµ¾àÀë
-	public static final int winRight = 100;//¾àÀëÆÁÄ»ÉÏÃæ±ßÔµ¾àÀë
+	public static final int winWidth = 550;//çª—å£å®½åº¦
+	public static final int winHeight = 550;//çª—å£é«˜åº¦
+	public static final int winLeft = 600;//è·ç¦»å±å¹•å·¦è¾¹ç¼˜è·ç¦»
+	public static final int winRight = 100;//è·ç¦»å±å¹•ä¸Šé¢è¾¹ç¼˜è·ç¦»
 	
-	/*ÒÔÏÂÊÇUI½çÃæµÄÏà¹Ø×é¼ş*/
-	public static JTextField jTextField_UDP_bdzjdz = new JTextField("±¾µØÖ÷»úµØÖ·",15);//UDP±¾µØÖ÷»úµØÖ·±à¼­¿ò
-	public static JTextField jTextField_UDP_bdzjdk = new JTextField("±¾µØÖ÷»ú¶Ë¿Ú",15);//UDP±¾µØÖ÷»ú¶Ë¿Ú±à¼­¿ò
-	//public static JTextField jTextField_TCPClient_bdzjdz = new JTextField("±¾µØÖ÷»úµØÖ·",15);//TCP Client±¾µØÖ÷»úµØÖ·±à¼­¿ò
-	//public static JTextField jTextField_TCPClient_bdzjdk = new JTextField("Ô¶³ÌÖ÷»úµØÖ·",15);//TCP Client±¾µØÖ÷»ú¶Ë¿Ú±à¼­¿ò
-	public static JTextField jTextField_TCPServer_bdzjdz = new JTextField("±¾µØÖ÷»úµØÖ·",15);//TCP Server±¾µØÖ÷»úµØÖ·±à¼­¿ò
-	public static JTextField jTextField_TCPServer_bdzjdk = new JTextField("±¾µØÖ÷»ú¶Ë¿Ú",15);//TCP Server±¾µØÖ÷»ú¶Ë¿Ú±à¼­¿ò
-	public static JButton jButton_UDP_start = new JButton("¿ªÆôUDP·şÎñ");//¿ªÆôUDP·şÎñÆ÷µÄ°´Å¥
-	public static JButton jButton_UDP_stop = new JButton("¹Ø±ÕUDP·şÎñ");//¹Ø±ÕUDP·şÎñÆ÷µÄ°´Å¥
-	public static JButton jButton_TCPServer_start = new JButton("¿ªÆôTCP Server·şÎñ");//¿ªÆôTCP Server·şÎñµÄ°´Å¥
-	public static JButton jButton_TCPServer_stop = new JButton("¹Ø±ÕTCP Server·şÎñ");//¹Ø±ÕTCP Server·şÎñµÄ°´Å¥
+	/*ä»¥ä¸‹æ˜¯UIç•Œé¢çš„ç›¸å…³ç»„ä»¶*/
+	public static JTextField jTextField_UDP_bdzjdz = new JTextField("æœ¬åœ°ä¸»æœºåœ°å€",15);//UDPæœ¬åœ°ä¸»æœºåœ°å€ç¼–è¾‘æ¡†
+	public static JTextField jTextField_UDP_bdzjdk = new JTextField("æœ¬åœ°ä¸»æœºç«¯å£",15);//UDPæœ¬åœ°ä¸»æœºç«¯å£ç¼–è¾‘æ¡†
+	//public static JTextField jTextField_TCPClient_bdzjdz = new JTextField("æœ¬åœ°ä¸»æœºåœ°å€",15);//TCP Clientæœ¬åœ°ä¸»æœºåœ°å€ç¼–è¾‘æ¡†
+	//public static JTextField jTextField_TCPClient_bdzjdk = new JTextField("è¿œç¨‹ä¸»æœºåœ°å€",15);//TCP Clientæœ¬åœ°ä¸»æœºç«¯å£ç¼–è¾‘æ¡†
+	public static JTextField jTextField_TCPServer_bdzjdz = new JTextField("æœ¬åœ°ä¸»æœºåœ°å€",15);//TCP Serveræœ¬åœ°ä¸»æœºåœ°å€ç¼–è¾‘æ¡†
+	public static JTextField jTextField_TCPServer_bdzjdk = new JTextField("æœ¬åœ°ä¸»æœºç«¯å£",15);//TCP Serveræœ¬åœ°ä¸»æœºç«¯å£ç¼–è¾‘æ¡†
+	public static JButton jButton_UDP_start = new JButton("å¼€å¯UDPæœåŠ¡");//å¼€å¯UDPæœåŠ¡å™¨çš„æŒ‰é’®
+	public static JButton jButton_UDP_stop = new JButton("å…³é—­UDPæœåŠ¡");//å…³é—­UDPæœåŠ¡å™¨çš„æŒ‰é’®
+	public static JButton jButton_TCPServer_start = new JButton("å¼€å¯TCP ServeræœåŠ¡");//å¼€å¯TCP ServeræœåŠ¡çš„æŒ‰é’®
+	public static JButton jButton_TCPServer_stop = new JButton("å…³é—­TCP ServeræœåŠ¡");//å…³é—­TCP ServeræœåŠ¡çš„æŒ‰é’®
 	
-	public static JTextArea jTextArea_srfs = new JTextArea(5,10);//ÊäÈë²¢·¢ËÍµÄÎÄ±¾¿ò
-	public static JTextArea jTextArea_wbjsxs = new JTextArea(10,10);//½ÓÊÕÏÔÊ¾ÎÄ±¾¿ò
+	public static JTextArea jTextArea_srfs = new JTextArea(5,10);//è¾“å…¥å¹¶å‘é€çš„æ–‡æœ¬æ¡†
+	public static JTextArea jTextArea_wbjsxs = new JTextArea(10,10);//æ¥æ”¶æ˜¾ç¤ºæ–‡æœ¬æ¡†
 	
-	public static int SEND_STATE = 0;//"µã»÷·¢ËÍ"°´Å¥¶ÔÓ¦µÄ×´Ì¬±äÁ¿£¬0ÎªÏò¾ÖÓòÍøËùÓĞÉè±¸·¢ËÍUDP¹ã²¥£¬1Îª·¢ËÍUDP£¬2Îª·¢ËÍTCP
+	public static int SEND_STATE = 0;//"ç‚¹å‡»å‘é€"æŒ‰é’®å¯¹åº”çš„çŠ¶æ€å˜é‡ï¼Œ0ä¸ºå‘å±€åŸŸç½‘æ‰€æœ‰è®¾å¤‡å‘é€UDPå¹¿æ’­ï¼Œ1ä¸ºå‘é€UDPï¼Œ2ä¸ºå‘é€TCP
 	
 	public void go(){
-		JFrame win = new JFrame("ÍøÂçµ÷ÊÔÖúÊÖJava°æ V1.0");    //³ÌĞò´°¿Ú
-		win.setBounds(winLeft, winRight, winWidth, winHeight);   //³ÌĞò´°¿ÚÄ¬ÈÏµÄÎ»ÖÃÒÔ¼°´óĞ¡
+		JFrame win = new JFrame("ç½‘ç»œè°ƒè¯•åŠ©æ‰‹Javaç‰ˆ V1.0");    //ç¨‹åºçª—å£
+		win.setBounds(winLeft, winRight, winWidth, winHeight);   //ç¨‹åºçª—å£é»˜è®¤çš„ä½ç½®ä»¥åŠå¤§å°
 		
-		Container container = win.getContentPane();  //´´½¨ContainerÒşĞÔ²ã£¬×é¼ş¶¼ÊÇ·ÅÔÚÕâ¸öÒşĞÔ²ãÉÏÃæ
-		container.setLayout(new GridLayout(1,2));   //²¼¾Ö¹ÜÀí,Grid ±íÊ¾1ĞĞ2ÁĞ
+		Container container = win.getContentPane();  //åˆ›å»ºContaineréšæ€§å±‚ï¼Œç»„ä»¶éƒ½æ˜¯æ”¾åœ¨è¿™ä¸ªéšæ€§å±‚ä¸Šé¢
+		container.setLayout(new GridLayout(1,2));   //å¸ƒå±€ç®¡ç†,Grid è¡¨ç¤º1è¡Œ2åˆ—
 		
-		JPanel jpleft = new JPanel();//×ó±ß²¼¾Ö
-		JPanel jpright = new JPanel();//ÓÒ±ß²¼¾Ö
-		jpleft.setLayout(new GridLayout(2, 1));  //±í¸ñ²¼¾Ö  Á½ĞĞÒ»ÁĞ
+		JPanel jpleft = new JPanel();//å·¦è¾¹å¸ƒå±€
+		JPanel jpright = new JPanel();//å³è¾¹å¸ƒå±€
+		jpleft.setLayout(new GridLayout(2, 1));  //è¡¨æ ¼å¸ƒå±€  ä¸¤è¡Œä¸€åˆ—
 		
 		JPanel jpleft_UDP = new JPanel();
 		//JPanel jpleft_TCPClient = new JPanel();
 		JPanel jpleft_TCPServer = new JPanel();
 		
-		JPanel jpright_wbjsxs = new JPanel();//ÓÒ±ßÎÄ±¾½ÓÊÕÏÔÊ¾
-		JPanel jpright_srfs = new JPanel();//ÓÒ±ßÊäÈë·¢ËÍ
+		JPanel jpright_wbjsxs = new JPanel();//å³è¾¹æ–‡æœ¬æ¥æ”¶æ˜¾ç¤º
+		JPanel jpright_srfs = new JPanel();//å³è¾¹è¾“å…¥å‘é€
 		
 		jpleft.add(jpleft_UDP);
 		//jpleft.add(jpleft_TCPClient);
@@ -75,15 +75,15 @@ public class NetAssist extends JFrame{
 		
 		win.add(jpleft);
 		win.add(jpright);
-		win.setVisible(true);   //¶¨Òå´°¿Ú¿É¼ûĞÔÎªÕæ
+		win.setVisible(true);   //å®šä¹‰çª—å£å¯è§æ€§ä¸ºçœŸ
 		
-		//×ó±ßUDPĞ­ÒéÀ¸ÖĞµÄÏà¹Ø×é¼ş
-		JLabel jludp = new JLabel("ÕâÀïÊÇUDPĞ­ÒéÏà¹ØµÄÄÚÈİ");
-		//JButton jButton_UDP_start = new JButton("¿ªÆôUDP·şÎñ");
+		//å·¦è¾¹UDPåè®®æ ä¸­çš„ç›¸å…³ç»„ä»¶
+		JLabel jludp = new JLabel("è¿™é‡Œæ˜¯UDPåè®®ç›¸å…³çš„å†…å®¹");
+		//JButton jButton_UDP_start = new JButton("å¼€å¯UDPæœåŠ¡");
 		        jButton_UDP_start.setActionCommand("jButton_UDP_start");
-		//JButton jButton_UDP_stop = new JButton("¹Ø±ÕUDP·şÎñ");
+		//JButton jButton_UDP_stop = new JButton("å…³é—­UDPæœåŠ¡");
 		        jButton_UDP_stop.setActionCommand("jButton_UDP_stop");
-		JButton jButton_UDP_send = new JButton("·¢ËÍUDPÏûÏ¢");
+		JButton jButton_UDP_send = new JButton("å‘é€UDPæ¶ˆæ¯");
 				jButton_UDP_send.setActionCommand("jButton_UDP_send");
 		jpleft_UDP.add(jludp);
 		jpleft_UDP.add(jTextField_UDP_bdzjdz);
@@ -92,37 +92,37 @@ public class NetAssist extends JFrame{
 		jpleft_UDP.add(jButton_UDP_stop);
 		jpleft_UDP.add(jButton_UDP_send);
 		
-		//×ó±ßTCP ClientĞ­ÒéÀ¸ÖĞµÄÏà¹Ø×é¼ş
-		//JLabel jltcpclient = new JLabel("ÕâÀïÊÇTCP ClientĞ­ÒéÏà¹ØµÄÄÚÈİ");
-		//JButton jButton_TCPClient_start = new JButton("¿ªÆôTCP Client·şÎñ");
-		//JButton jButton_TCPClient_stop = new JButton("¹Ø±ÕTCP Client·şÎñ");
+		//å·¦è¾¹TCP Clientåè®®æ ä¸­çš„ç›¸å…³ç»„ä»¶
+		//JLabel jltcpclient = new JLabel("è¿™é‡Œæ˜¯TCP Clientåè®®ç›¸å…³çš„å†…å®¹");
+		//JButton jButton_TCPClient_start = new JButton("å¼€å¯TCP ClientæœåŠ¡");
+		//JButton jButton_TCPClient_stop = new JButton("å…³é—­TCP ClientæœåŠ¡");
 		//jpleft_TCPClient.add(jltcpclient);
 		//jpleft_TCPClient.add(jTextField_TCPClient_bdzjdz);
 		//jpleft_TCPClient.add(jTextField_TCPClient_bdzjdk);
 		//jpleft_TCPClient.add(jButton_TCPClient_start);
 		//jpleft_TCPClient.add(jButton_TCPClient_stop);
 		
-		//×ó±ßTCP ServerĞ­ÒéÀ¸ÖĞµÄÏà¹Ø×é¼ş
-		JLabel jltcpserver = new JLabel("ÕâÀïÊÇTCP ServerĞ­ÒéÏà¹ØµÄÄÚÈİ");
-		//JButton jButton_TCPServer_start = new JButton("¿ªÆôTCP Server·şÎñ");
+		//å·¦è¾¹TCP Serveråè®®æ ä¸­çš„ç›¸å…³ç»„ä»¶
+		JLabel jltcpserver = new JLabel("è¿™é‡Œæ˜¯TCP Serveråè®®ç›¸å…³çš„å†…å®¹");
+		//JButton jButton_TCPServer_start = new JButton("å¼€å¯TCP ServeræœåŠ¡");
 		        jButton_TCPServer_start.setActionCommand("jButton_TCPServer_start");
-		//JButton jButton_TCPServer_stop = new JButton("¹Ø±ÕTCP Server·şÎñ");
+		//JButton jButton_TCPServer_stop = new JButton("å…³é—­TCP ServeræœåŠ¡");
 		        jButton_TCPServer_stop.setActionCommand("jButton_TCPServer_stop");
-		JButton jButton_TCPServer_send = new JButton("·¢ËÍTCPÏûÏ¢");
+		JButton jButton_TCPServer_send = new JButton("å‘é€TCPæ¶ˆæ¯");
 				jButton_TCPServer_send.setActionCommand("jButton_TCPServer_send");
 		jpleft_TCPServer.add(jltcpserver);
 		jpleft_TCPServer.add(jTextField_TCPServer_bdzjdz);
 		jpleft_TCPServer.add(jTextField_TCPServer_bdzjdk);
-		jpleft_TCPServer.add(jButton_TCPServer_start);//¿ªÆôµÄ°´Å¥
+		jpleft_TCPServer.add(jButton_TCPServer_start);//å¼€å¯çš„æŒ‰é’®
 		jpleft_TCPServer.add(jButton_TCPServer_stop);
 		jpleft_TCPServer.add(jButton_TCPServer_send);
 		
 		
-		JButton jbsend = new JButton("ÕâÀïÊÇÒª·¢ËÍµÄÎÄ±¾");
+		JButton jbsend = new JButton("è¿™é‡Œæ˜¯è¦å‘é€çš„æ–‡æœ¬");
 		        jbsend.setActionCommand("jbsend");
 		
 		
-		JLabel jLabel_wbjsxs = new JLabel("½ÓÊÕµÄÎÄ±¾");
+		JLabel jLabel_wbjsxs = new JLabel("æ¥æ”¶çš„æ–‡æœ¬");
 		
 		
 		
@@ -135,7 +135,7 @@ public class NetAssist extends JFrame{
 		
 		
 		
-		//¸ø°´Å¥Ìí¼ÓÊÂ¼ş¼àÌıÆ÷
+		//ç»™æŒ‰é’®æ·»åŠ äº‹ä»¶ç›‘å¬å™¨
 		ActionListener ac = new ActionHandler();
 		jbsend.addActionListener(ac);
 		jButton_TCPServer_start.addActionListener(ac);
@@ -145,7 +145,7 @@ public class NetAssist extends JFrame{
 		
 		
 		
-		//¸ø´°¿ÚÌí¼Ó¼àÌıÆ÷
+		//ç»™çª—å£æ·»åŠ ç›‘å¬å™¨
 		//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		WindowListener wl = new WindowHandler();
 		addWindowListener(wl);
@@ -159,7 +159,7 @@ public class NetAssist extends JFrame{
 	
 	
 	/**
-	 * ¶¨ÒåÊÂ¼ş¼àÌıÀà
+	 * å®šä¹‰äº‹ä»¶ç›‘å¬ç±»
 	 * @param arg
 	 */
 	class ActionHandler implements ActionListener{
@@ -167,22 +167,22 @@ public class NetAssist extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			      if(e.getActionCommand() == "jbsend"){
-			    	//¡°µã»÷·¢ËÍ¡±°´Å¥£¬ÅĞ¶ÏÒÔÏÂ´ËÊ±´Ë¿ÌÊÇ´¦ÓÚºÎÖÖ×´Ì¬£¬¾Íµ÷ÓÃ²»Í¬µÄ·½·¨»ñÈ¡²»Í¬µÄ²ÎÊıÀ´·¢ËÍÊı¾İ
+			    	//â€œç‚¹å‡»å‘é€â€æŒ‰é’®ï¼Œåˆ¤æ–­ä»¥ä¸‹æ­¤æ—¶æ­¤åˆ»æ˜¯å¤„äºä½•ç§çŠ¶æ€ï¼Œå°±è°ƒç”¨ä¸åŒçš„æ–¹æ³•è·å–ä¸åŒçš„å‚æ•°æ¥å‘é€æ•°æ®
 			    	if(SEND_STATE == 0){
-			    		  System.out.println("ÊÂ¼ş0ÏìÓ¦£¬Ïò¾ÖÓòÍøËùÓĞÉè±¸·¢ËÍUDP¹ã²¥");
+			    		  System.out.println("äº‹ä»¶0å“åº”ï¼Œå‘å±€åŸŸç½‘æ‰€æœ‰è®¾å¤‡å‘é€UDPå¹¿æ’­");
 			    		  try {
 			    			  
 							UDP.UDPsend(jTextField_UDP_bdzjdz.getText(),Integer.parseInt(jTextField_UDP_bdzjdk.getText()));
 							
 						} catch (IOException e1) {
-							System.out.println("ÊÂ¼ş0ÏìÓ¦Ê§°Ü£¬Ïò¾ÖÓòÍøËùÓĞÉè±¸·¢ËÍUDP¹ã²¥Ê§°Ü");
+							System.out.println("äº‹ä»¶0å“åº”å¤±è´¥ï¼Œå‘å±€åŸŸç½‘æ‰€æœ‰è®¾å¤‡å‘é€UDPå¹¿æ’­å¤±è´¥");
 							e1.printStackTrace();
 						}
 			    		  
 			    	}else if (SEND_STATE == 1) {
-			    		  System.out.println("ÊÂ¼ş1ÏìÓ¦£¬¿ªÆôTCP Server·şÎñ£¬·¢ËÍ°´Å¥·¢ËÍTCPÏûÏ¢");
+			    		  System.out.println("äº‹ä»¶1å“åº”ï¼Œå¼€å¯TCP ServeræœåŠ¡ï¼Œå‘é€æŒ‰é’®å‘é€TCPæ¶ˆæ¯");
 			    		  try {
-			    			  //TCPÏûÏ¢·¢ËÍ
+			    			  //TCPæ¶ˆæ¯å‘é€
 							Client1.tcpClientSend(jTextField_TCPServer_bdzjdz.getText(), Integer.parseInt(jTextField_TCPServer_bdzjdk.getText()));
 							
 						} catch (NumberFormatException e1) {
@@ -192,15 +192,15 @@ public class NetAssist extends JFrame{
 						}
 			    		  
 					}else if (SEND_STATE != 0 && SEND_STATE != 1 && SEND_STATE != 2 && SEND_STATE != 3) {
-						System.out.println("ÊÂ¼şelseÏìÓ¦");
+						System.out.println("äº‹ä»¶elseå“åº”");
 						
 					}
 				
 			}else if (e.getActionCommand() == "jButton_TCPServer_start") {
-				//µã»÷¿ªÆôTCP Server·şÎñµÄ°´Å¥
-				SEND_STATE = 1;//½«·¢ËÍ°´Å¥ SEND_STATE ×´Ì¬¸Ä³É1
+				//ç‚¹å‡»å¼€å¯TCP ServeræœåŠ¡çš„æŒ‰é’®
+				SEND_STATE = 1;//å°†å‘é€æŒ‰é’® SEND_STATE çŠ¶æ€æ”¹æˆ1
 				/*try {
-	    			  //¿ªÆôTCP Server·şÎñ
+	    			  //å¼€å¯TCP ServeræœåŠ¡
 					Server1.tcpServerReceive(Integer.parseInt(jTextField_TCPServer_bdzjdk.getText()));
 					
 				} catch (NumberFormatException e1) {
@@ -209,41 +209,41 @@ public class NetAssist extends JFrame{
 					e1.printStackTrace();
 				}*/
 				
-				//¿ªÆôTCPServerµÄÏß³Ì
+				//å¼€å¯TCPServerçš„çº¿ç¨‹
 				Server1.flag_Server1 = true;
 				Server1 server1 = new Server1(Integer.parseInt(jTextField_TCPServer_bdzjdk.getText()));
 				server1.start();
 				
 				
 			}else if (e.getActionCommand() == "jButton_TCPServer_stop") {
-				//¹Ø±ÕTCP Server·şÎñµÄ°´Å¥
-				Server1.flag_Server1 = false;//¸Ä±ä±êÖ¾Î»µÄÖµ£¬ÈÃÑ­»·×Ô¶¯Í£Ö¹
+				//å…³é—­TCP ServeræœåŠ¡çš„æŒ‰é’®
+				Server1.flag_Server1 = false;//æ”¹å˜æ ‡å¿—ä½çš„å€¼ï¼Œè®©å¾ªç¯è‡ªåŠ¨åœæ­¢
 				
 				
 				
 			} else if (e.getActionCommand() == "jButton_UDP_start") {
-				//ÅĞ¶ÏÌîĞ´µÄ£¬Òª¼àÌıµÄ¶Ë¿ÚºÅµÄ±à¼­¿òÊÇ·ñÌîÈëÁËÕıÈ·µÄ¶Ë¿ÚºÅ
+				//åˆ¤æ–­å¡«å†™çš„ï¼Œè¦ç›‘å¬çš„ç«¯å£å·çš„ç¼–è¾‘æ¡†æ˜¯å¦å¡«å…¥äº†æ­£ç¡®çš„ç«¯å£å·
 				if(isPort(jTextField_UDP_bdzjdk.getText())){
-					//¿ªÆôUDP·şÎñ
-					SEND_STATE = 0;//½«·¢ËÍ°´Å¥ SEND_STATE ×´Ì¬¸Ä³É0
-					jTextArea_wbjsxs.append("UDPÏûÏ¢½ÓÊÕÏß³ÌÒÑ¾­Æô¶¯...\n");//Ìí¼ÓÆô¶¯³É¹¦µÄÌáÊ¾
-					UDPReceiveThread.flag = true;//»Ö¸´±êÖ¾Î»µÄÔ­±¾ÊôĞÔ£¬ÈÃÏÂÒ»´ÎUDP½ÓÊÕÏß³Ì¿ÉÒÔÕı³£¿ªÆô
+					//å¼€å¯UDPæœåŠ¡
+					SEND_STATE = 0;//å°†å‘é€æŒ‰é’® SEND_STATE çŠ¶æ€æ”¹æˆ0
+					jTextArea_wbjsxs.append("UDPæ¶ˆæ¯æ¥æ”¶çº¿ç¨‹å·²ç»å¯åŠ¨...\n");//æ·»åŠ å¯åŠ¨æˆåŠŸçš„æç¤º
+					UDPReceiveThread.flag = true;//æ¢å¤æ ‡å¿—ä½çš„åŸæœ¬å±æ€§ï¼Œè®©ä¸‹ä¸€æ¬¡UDPæ¥æ”¶çº¿ç¨‹å¯ä»¥æ­£å¸¸å¼€å¯
 					UDPReceiveThread udpReceiveThread = new UDPReceiveThread(Integer.parseInt(jTextField_UDP_bdzjdk.getText())/*, "127.0.0.1"*/);
-					udpReceiveThread.start();//Æô¶¯½ÓÊÕÏß³Ì
+					udpReceiveThread.start();//å¯åŠ¨æ¥æ”¶çº¿ç¨‹
 					
-					jButton_UDP_start.setEnabled(false);//ÉèÖÃµã»÷ºó°´Å¥²»¿Éµã
+					jButton_UDP_start.setEnabled(false);//è®¾ç½®ç‚¹å‡»åæŒ‰é’®ä¸å¯ç‚¹
 				}else {
-					//µ¯³öÌáÊ¾¿òÌáÊ¾ÊäÈëµÄ¶Ë¿ÚºÅ²»ÕıÈ·
-			        JOptionPane.showMessageDialog(null, "ÇëÌîĞ´ÕıÈ·µÄ¶Ë¿ÚºÅ1-65535","ÌáÊ¾´°¿Ú", JOptionPane.INFORMATION_MESSAGE);
+					//å¼¹å‡ºæç¤ºæ¡†æç¤ºè¾“å…¥çš„ç«¯å£å·ä¸æ­£ç¡®
+			        JOptionPane.showMessageDialog(null, "è¯·å¡«å†™æ­£ç¡®çš„ç«¯å£å·1-65535","æç¤ºçª—å£", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				
 			}else if (e.getActionCommand() == "jButton_UDP_stop") {
-				//¹Ø±ÕUDP·şÎñ
-				jButton_UDP_start.setEnabled(true);//ÉèÖÃµã»÷ºó»Ö¸´¿ªÆô°´Å¥Îª¿Éµã
-				UDPReceiveThread.flag = false;//¸Ä±ä±êÖ¾Î»£¬ÍÆ³öÑ­»·½ÓÊÕµÄÏß³Ì
+				//å…³é—­UDPæœåŠ¡
+				jButton_UDP_start.setEnabled(true);//è®¾ç½®ç‚¹å‡»åæ¢å¤å¼€å¯æŒ‰é’®ä¸ºå¯ç‚¹
+				UDPReceiveThread.flag = false;//æ”¹å˜æ ‡å¿—ä½ï¼Œæ¨å‡ºå¾ªç¯æ¥æ”¶çš„çº¿ç¨‹
 				
-				/**UDP½ÓÊÕÏß³Ì×èÈûµÄÎÊÌâ»¹Ã»ÓĞ½â¾ö*//********************************************************************/
+				/**UDPæ¥æ”¶çº¿ç¨‹é˜»å¡çš„é—®é¢˜è¿˜æ²¡æœ‰è§£å†³*//********************************************************************/
 			}
 			
 		}
@@ -251,7 +251,7 @@ public class NetAssist extends JFrame{
 	}
 	
 	/**
-	 * ¶¨ÒåÊÂ¼ş¼àÌıÀà1
+	 * å®šä¹‰äº‹ä»¶ç›‘å¬ç±»1
 	 * @author ZBW
 	 *
 	 */
@@ -265,7 +265,7 @@ public class NetAssist extends JFrame{
 	
 	
 	/**
-	 * ¶¨Òå´°¿Ú¼àÌıÀà
+	 * å®šä¹‰çª—å£ç›‘å¬ç±»
 	 * @param arg
 	 */
 	class WindowHandler implements WindowListener{
@@ -289,7 +289,7 @@ public class NetAssist extends JFrame{
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÎª¶Ë¿ÚºÅµÄ·½·¨
+	 * åˆ¤æ–­æ˜¯å¦ä¸ºç«¯å£å·çš„æ–¹æ³•
 	 * @param port
 	 * @return
 	 */
@@ -303,7 +303,7 @@ public class NetAssist extends JFrame{
 		return flag;
 	}
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÎªÊı×ÖµÄ·½·¨£¬ÓÃµÄÊÇÕıÔò±í´ïÊ½
+	 * åˆ¤æ–­æ˜¯å¦ä¸ºæ•°å­—çš„æ–¹æ³•ï¼Œç”¨çš„æ˜¯æ­£åˆ™è¡¨è¾¾å¼
 	 * @param str
 	 * @return
 	 */
@@ -320,7 +320,7 @@ public class NetAssist extends JFrame{
 	
 	
 	public static void main(String arg[]) {
-		//JFrameÀàµÄ¶ÔÏó£¬²¢µ÷ÓÃgo()·½·¨
+		//JFrameç±»çš„å¯¹è±¡ï¼Œå¹¶è°ƒç”¨go()æ–¹æ³•
 		NetAssist fe = new NetAssist();
 		fe.go();
 	}
