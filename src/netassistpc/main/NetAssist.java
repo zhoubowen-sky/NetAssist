@@ -129,8 +129,6 @@ public class NetAssist extends JFrame{
 		
 		
 		
-		
-		
 		//给按钮添加事件监听器
 		ActionListener ac = new ActionHandler();
 		jbsend.addActionListener(ac);
